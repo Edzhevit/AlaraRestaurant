@@ -54,7 +54,7 @@ You are not allowed to modify the provided JSON and XML files.
 
 If a record does not meet the requirements from the first section, print an error message:
 
-##### Invalid data format.
+Invalid data format.
 
 ### JSON Import 
 #### Import Employees
@@ -66,64 +66,6 @@ Using the file employees.json, import the data from that file into the database.
 * If a position doesn’t exist yet (and the position and rest of employee data is valid), create it.
 * If an employee is invalid, do not import their position.
 
-Example
-
-employees.json
-
-[
-
-  {
-    "name": "N",
-    "age": 20,
-    "position": "Invalid"
-  },
-  
-  {
-    "name": "Too Young",
-    "age": 14,
-    "position": "Invalid"
-  },
-  
-  {
-    "name": "Too Old",
-    "age": 81,
-    "position": "Invalid"
-  },
-  
-  {
-    "name": "Invalid Position",
-    "age": 20,
-    "position": ""
-  },
-  
-  {
-    "name": "InvalidPosition",
-    "age": 20,
-    "position": "Invaliddddddddddddddddddddddddd"
-  },
-  
-  {
-    "name": "Magda Bjork",
-    "age": 44,
-    "position": "CEO"
-  },
-  
-…
-Output
-
-Invalid data format.
-
-Invalid data format.
-
-Invalid data format.
-
-Invalid data format.
-
-Invalid data format.
-
-Record Magda Bjork successfully imported.
-
-…
 
 #### Import Items
 
@@ -132,68 +74,6 @@ Constraints
 * If any validation errors occur (such as invalid item name or invalid category name), ignore the entity and print an error message.
 * If an item with the same name already exists, ignore the entity and do not import it.
 * If an item’s category doesn’t exist, create it along with the item.
-
-Example
-
-items.json
-
-[
-  {
-    "name": "Hamburger",
-    "price": 0.00,
-    "category": "Invalid"
-  },
-  {
-    "name": "Hamburger",
-    "price": -5.00,
-    "category": "Invalid"
-  },
-  {
-    "name": "x",
-    "price": 1.00,
-    "category": "Invalid"
-  },
-  {
-    "name": "Invaliddddddddddddddddddddddddd",
-    "price": 1.00,
-    "category": "Invalid"
-  },
-  {
-    "name": "Invalid",
-    "price": 1.00,
-    "category": "x"
-  },
-  {
-    "name": "Invalid",
-    "price": 1.00,
-    "category": "Invaliddddddddddddddddddddddddd"
-  },
-  {
-    "name": "Hamburger",
-    "price": 5.00,
-    "category": "Beef"
-  },
-  {
-    "name": "Hamburger",
-    "price": 1.00,
-    "category": "Beef"
-  },
-  {
-    "name": "Cheeseburger",
-    "price": 6.00,
-    "category": "Beef"
-  },
-…
-Output
-Invalid data format.
-Invalid data format.
-Invalid data format.
-Invalid data format.
-Invalid data format.
-Invalid data format.
-Record Hamburger successfully imported.
-Invalid data format.
-Record Cheeseburger successfully imported.
 
 ### XML Import 
 #### Import Orders
@@ -206,88 +86,16 @@ If any of the model requirements is violated continue with the next entity.
 * If any of the order’s items do not exist, do not import the order.
 * Every employee will have a unique name
 
-Example
-orders.xml
-<?xml version="1.0" encoding="utf-8"?>
-<orders>
-  <order>
-    <customer>Garry</customer>
-    <employee>Maxwell Shanahan</employee>
-    <date-time>21/08/2017 13:22</date-time>
-    <type>ForHere</type>
-    <items>
-      <item>
-        <name>Quarter Pounder</name>
-        <quantity>2</quantity>
-      </item>
-      <item>
-        <name>Premium chicken sandwich</name>
-        <quantity>2</quantity>
-      </item>
-      <item>
-        <name>Chicken Tenders</name>
-        <quantity>4</quantity>
-      </item>
-      <item>
-        <name>Just Lettuce</name>
-        <quantity>4</quantity>
-      </item>
-    </items>
-  </order>
-...
-</orders>
-Output
-Order for Garry on 21/08/2017 13:22 added
-
 ## Data Export
 Get ready to export the data you’ve imported in the previous task. Here you will have some pretty complex database querying. Export the data in the formats specified below.
 
-Categories by count of items
+## Categories by count of items
 
-Export all categories by count of items:
+### Export all categories by count of items:
 * Extract from the database, categories’ names and items in the categories with their name and price.
 * Order them descending by count of items in each category, and if two or more categories have same number of items, order them descending by sum of the items’ prices in each category.
-* The format is described below:
-
-Category: {category1Name}
---- Item Name: {item1Name}
---- Item Price: {item1Price}
-
---- Item Name: {item2Name}
---- Item Price: {item2Price}
-
---- Item Name: {item3Name}
---- Item Price: {item3Price}
-
-     …
-	
-Category: {category2Name}
---- Item Name: {item1Name}
---- Item Price: {item1Price}
-	
-     …
-
-	
 	
 ### Orders finished by the Burger Flippers
 Export all orders which are finished by the Burger Flippers:
 * Extract from the database, employees’ names, orders’ customers and items in the orders with their name, price and quantity.
 * Order them by employee name, and by order id.
-* The format is described below:
-
-Name: {employee1Name}
-Orders:
-   Customer: {customerName}
-   Items:
-      Name: {item1Name}
-      Price: {item1Price}
-      Quantity: {item1Quantity}
-      Name: {item2Name}
-      Price: {item2Price}
-      Quantity: {item2Quantity}
-
-Name: {employee2Name}
-Orders:
-   Customer: {customerName}
-   Items:
-      …
